@@ -3,7 +3,7 @@ package com.aplication.paymentsystem.config;
 import java.security.SecureRandom;
 
 public class RandomString {
-    private static final String CHARACTERS = "LADF2VdflN93IAFVNAIFNsfnnuonsnf123986442";
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 
     public static String generateRandomString(int length){

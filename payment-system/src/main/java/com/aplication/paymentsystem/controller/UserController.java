@@ -2,14 +2,17 @@ package com.aplication.paymentsystem.controller;
 
 
 import com.aplication.paymentsystem.domain.DTO.UserR;
+import com.aplication.paymentsystem.domain.DTO.UserResponse;
 import com.aplication.paymentsystem.domain.User;
 import com.aplication.paymentsystem.service.UserService;
+import jakarta.mail.MessagingException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.UnsupportedEncodingException;
 
 @RestController
 @RequestMapping("/user")
@@ -20,9 +23,18 @@ public class UserController {
 
 
     @PostMapping
-    public ResponseEntity<User> registerUser(@RequestBody UserR userR){
+    public ResponseEntity<UserResponse> registerUser(@RequestBody @Valid UserR userR) throws MessagingException,
+            UnsupportedEncodingException {
         User user = userR.toModel();
-        User usersave = service.registerUser(user);
+        UserResponse usersave = service.registerUser(user);
         return ResponseEntity.ok().body(usersave);
+    }
+    @GetMapping("/verify")
+    public String verifyUser(@Param("code") String code){
+        if(service.verify(code)){
+            return "verify_sucess";
+        }else {
+            return "fail_verify";
+        }
     }
 }
