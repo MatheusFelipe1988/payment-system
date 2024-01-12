@@ -22,13 +22,15 @@ public class UserController {
     private UserService service;
 
 
-    @PostMapping
+
+    @PostMapping("/register")
     public ResponseEntity<UserResponse> registerUser(@RequestBody @Valid UserR userR) throws MessagingException,
             UnsupportedEncodingException {
         User user = userR.toModel();
         UserResponse usersave = service.registerUser(user);
         return ResponseEntity.ok().body(usersave);
     }
+
     @GetMapping("/verify")
     public String verifyUser(@Param("code") String code){
         if(service.verify(code)){
@@ -36,5 +38,9 @@ public class UserController {
         }else {
             return "fail_verify";
         }
+    }
+    @GetMapping("/teste")
+    public String teste(){
+        return "login sucess";
     }
 }
