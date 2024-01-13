@@ -22,7 +22,6 @@ public class UserController {
     private UserService service;
 
 
-
     @PostMapping("/register")
     public ResponseEntity<UserResponse> registerUser(@RequestBody @Valid UserR userR) throws MessagingException,
             UnsupportedEncodingException {

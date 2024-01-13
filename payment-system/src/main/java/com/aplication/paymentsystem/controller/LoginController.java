@@ -29,7 +29,7 @@ public class LoginController {
 
         var auth = authenticationManager.authenticate(usernamePassword);
 
-        var token = tokenService.generateToken((User) auth.getPrincipal() );
+        var token = tokenService.generateToken((User) auth.getPrincipal());
 
         return ResponseEntity.ok(new AuthenticationResponse(token));
     }
