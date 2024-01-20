@@ -21,6 +21,7 @@ public class User implements UserDetails {
     private String senha;
     private String verificationCode;
     private boolean enabled;
+    private String role;
 
     public User(Long id, String nome, String email, String senha, String verificationCode, boolean enabled) {
         this.id = id;
@@ -31,10 +32,11 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-    public User(String nome, String email, String senha) {
+    public User(String nome, String email, String senha, String role) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.role = role;
     }
 
     public User() {

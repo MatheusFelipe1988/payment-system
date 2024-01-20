@@ -11,8 +11,15 @@ public record UserR(@NotNull(message = "Nome é obrigatório") @NotBlank(message
                     @Email
                     String email,
                     @NotNull(message = "Senha é obrigatório") @NotBlank(message = "Campo obrigatório")
-                    @Size(min = 8, message = "A senha deve no minimo possuir 8 caracteres") String senha) {
+                    @Size(min = 8, message = "A senha deve no minimo possuir 8 caracteres")
+                    String senha,
+                    @NotNull(message = "Senha é obrigatório") @NotBlank(message = "Campo obrigatório")
+                    @Size(min = 8, message = "A senha deve no minimo possuir 8 caracteres")
+                    String role
+) {
+
+
     public User toModel(){
-        return new User(nome,email,senha);
+        return new User(nome,email,senha,role);
     }
 }

@@ -30,7 +30,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
         var token = this.recoverToken(request);
         if(token != null){
-            var subject = tokenService.ValidateToken(token);
+            var subject = tokenService.validateToken(token);
             UserDetails user = repository.findByEmail(subject);
 
             var authentication = new UsernamePasswordAuthenticationToken(
@@ -48,7 +48,7 @@ public class SecurityFilter extends OncePerRequestFilter {
         if (authHeader == null){
             return null;
         }else {
-            return authHeader.replace("Bearer","");
+            return authHeader.replace("Bearer ", "");
         }
     }
 }

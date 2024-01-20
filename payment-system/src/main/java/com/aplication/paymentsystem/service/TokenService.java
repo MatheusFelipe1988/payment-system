@@ -17,6 +17,7 @@ public class TokenService {
     @Value("${jwt.secret}")
     private String secret;
 
+
     public String generateToken(User user){
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
@@ -33,7 +34,7 @@ public class TokenService {
         }
     }
 
-    public String ValidateToken(String token){
+    public String validateToken(String token){
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
