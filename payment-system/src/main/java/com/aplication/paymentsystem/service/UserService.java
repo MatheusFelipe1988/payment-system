@@ -24,7 +24,7 @@ public class UserService {
         if(repository.findByEmail(user.getEmail()) != null){
             throw new RuntimeException("This email exist");
         }else{
-            String encodedSenha = passwordEncoder.encode(user.getSenha());
+            String encodedSenha = passwordEncoder.encode(user.getPassword());
             user.setSenha(encodedSenha);
 
             String randomCode = RandomString.generateRandomString(64);

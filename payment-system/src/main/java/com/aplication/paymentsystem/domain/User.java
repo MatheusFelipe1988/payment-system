@@ -32,10 +32,10 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-    public User(String nome, String email, String senha, String role) {
+    public User(String nome, String email, String senna, String role) {
         this.nome = nome;
         this.email = email;
-        this.senha = senha;
+        this.senha = senna;
         this.role = role;
     }
 
