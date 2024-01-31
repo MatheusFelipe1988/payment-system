@@ -4,6 +4,7 @@ import com.aplication.paymentsystem.domain.DTO.PixChargeDTO;
 import com.aplication.paymentsystem.service.PixService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,9 @@ public class PixController {
     public ResponseEntity createPixEVP(){
 
         JSONObject response = this.pixService.pixCreateEVP();
-        return ResponseEntity.ok(response);
-
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(response.toString());
     }
 
     @PostMapping
@@ -26,6 +28,8 @@ public class PixController {
 
         JSONObject response = this.pixService.pixChargeCreate(pixChargeDTO);
 
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(response.toString());
     }
 }
